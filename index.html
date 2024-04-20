@@ -14,13 +14,6 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 		<!-- <link rel="stylesheet" href="plugin/highlight/vs.css"> -->
-		<!-- <style>
-			.reveal pre code {
-				display: inline;
-    			/* line-height: 0; */
-				margin: 0;
-			}
-		</style> -->
 	</head>
 	<body>
 		<div class="reveal">
@@ -49,33 +42,14 @@
 				<section data-auto-animate>
 					<h5 style="text-align: left;">These slides will discuss:</h5>
 					<div style="font-size: 0.65em; text-align: left;" data-auto-animate-id="list">
-						<h6>What is MaxMSP?</h6>
-						<h6 class="fragment">MaxMSP History</h6>
-						<h6 class="fragment">Useful Concepts for Our Class</h6>
-					</div>
-				</section>
-				<section data-auto-animate>
-					<h5 style="text-align: left;">These slides will discuss:</h5>
-					<div style="font-size: 0.65em; text-align: left;" data-auto-animate-id="list">
-						<h6>What is MaxMSP?</h6>
-							<ul>
-								<li>Uses (and Abuses)</li>
-								<li>Visual Programming</li>
-								<li>Realtime vs. Non-Realtime ("Offline") Electronics</li>
-							</ul>
-						<h6>MaxMSP History</h6>
-							<ul>
-								<li>Max Mathews</li>
-								<li>Miller Puckette</li>
-							</ul>
-						<h6>Useful Concepts for Our Class</h6>
-							<ul>
-								<li>Max is Not a DAW</li>
-								<li>Control Rate vs. Signal Rate</li>
-								<li>New Terms and Shortcuts</li>
-								<li>Listening Repertoire</li>
-								<li>Pedagogical Patches In Class</li>
-							</ul>
+						<h6>What is  <span class="gen">gen~</span>?</h6>
+						<h6 class="fragment">What is JIT compiling?</h6>
+						<h6 class="fragment">Signal Vectors</h6>
+						<h6 class="fragment">Why Do We Need <span class="gen">gen~</span>?</h6>
+						<h6 class="fragment">What Can We Make in <span class="gen">gen~</span> That We Can't Make in MSP?</h6>
+						<h6 class="fragment">How is Patching in <span class="gen">gen~</span> Different From MSP?</h6> 
+						<h6 class="fragment">How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h6> 
+
 					</div>
 				</section>
 
@@ -188,7 +162,7 @@
 						<h4>Why Do We Need <span class="gen">gen~</span>?</h4>
 					</div>
 					<div class="special-body">
-						<img data-src="img/03.greg.signal.vectors.png" class="bogus-iir fade-in-text" alt="bad IIR">  
+						<img data-src="img/03.greg.signal.vectors.png" width="45%" class="bogus-iir fade-in-text" alt="bad IIR">  
 					</div>
 				</section>
 
@@ -460,7 +434,7 @@
 					</div>
 				</section>
 
-				<section class="special-slide" data-auto-animate>
+				<!-- <section class="special-slide" data-auto-animate>
 					<div class="special-header">
 						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
 					</div>
@@ -471,7 +445,7 @@
 						<p class="fragment">now made possible by the ability to <em>rebuild</em> and <em>customize</em> this filter in <span class="gen">gen~</span>.</p>  
 						<p class="fragment">Let's again turn the topology 90° clockwise and use the <span class="gen">gen~</span> operators...</p>
 					</div>
-				</section>
+				</section> -->
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
