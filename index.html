@@ -88,9 +88,6 @@
 						<p class="fragment"><span class="gen">gen~</span> is another type of <strong>subpatch</strong> in MaxMSP,</p>  
 						<p class="fragment">much like the subpatches you already know:</p> 
 						<p class="fragment"><span class="gen">p</span>, <span class="gen">poly~</span>, and <span class="gen">pfft~</span></p>
-						<!-- <blockquote class="fragment" style="font-size: smaller;">
-							<em>Max is an interactive, visual patching environment for musicians,<br>artists, and anyone who loves creating, inventing,<br>or prototyping their own unique software.</em>
-						</blockquote> -->
 					</div>
 				</section>
 
@@ -110,10 +107,10 @@
 						<h4>What is <span class="gen">gen~</span>?</h4>
 					</div>
 					<div class="special-body">
-						<p>Making a <span class="gen">gen~</span> subpatch is a lot like programming <strong>the code of an MSP (audio) object</strong>...</p>  
-						<p class="fragment">It allows us to do audio processing tasks</p>  
+						<p>A <span class="gen">gen~</span> subpatch is a lot like <strong>the internal code of an MSP (audio) object</strong>...</p>  
+						<p class="fragment"><span class="gen">gen~</span> allows us to do audio processing tasks</p>  
 						<p class="fragment">that cannot be accomplished with our standard MSP objects.</p>
-						<p class="fragment"><span class="gen">gen~</span> is its own <strong>language</strong>:</p> 
+						<p class="fragment"><span class="gen">gen~</span> is also its own <strong>language</strong> called <span class="gen">gendsp</span>:</p> 
 						<blockquote class="fragment" style="font-size: 0.75em;">
 							<em>“devoted to audio processing and musical programming <strong>at the sample frame level</strong>.”</em>
 							<p>—Gregory Taylor</p>
@@ -144,9 +141,6 @@
 						<p class="fragment"><strong>JIT</strong> <em>(“Just-in-Time”)</em> compiling</p>
 						<p class="fragment">also known as <strong>run-time compiling</strong></p>
 						<p class="fragment">means your code is compiled <strong>during execution</strong>.</p>
-						<p class="fragment">That is, code is <em>translated</em> into machine directions <br>at <em>nearly the same moment</em> your computer <em>calls</em><br>or <em>executes</em> those directions to process a result.</p>
-						<p class="fragment">MaxMSP compiles your code extremely quickly.</p>
-						<p class="fragment">You can edit your code <em>“on the fly”</em> with low latency<br>and minimal disruption to your signal flow.</p>
 					</div>
 				</section>
 
@@ -155,7 +149,30 @@
 						<h4>What is JIT?</h4>
 					</div>
 					<div class="special-body">
-						<p>But Greg explains next, MaxMSP is <strong>not</strong> operating on a <em>sample-by-sample</em> basis.</p>
+						<p>That is, code is <em>translated</em> into machine directions</p>
+						<p class="fragment">at <em>nearly the same moment</em> your computer</p>
+						<p class="fragment"><strong>calls</strong> or <strong>executes</strong> those directions</p>
+						<p class="fragment">in order to process a result.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is JIT?</h4>
+					</div>
+					<div class="special-body">
+						<p>MaxMSP compiles your code extremely quickly.</p>
+						<p class="fragment">You can edit your code <em>“on the fly”</em> with low latency</p>
+						<p class="fragment">and minimal disruption to your signal flow.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Why Do We Need <span class="gen">gen~</span>?</h4>
+					</div>
+					<div class="special-body">
+						<p>But as Greg explains next, MaxMSP is <strong>not</strong> operating on a <em>sample-by-sample</em>, <strong>JIT</strong> basis.</p>
 						<p class="fragment">Instead, Max processes audio in <strong>blocks (or “chunks”) of audio samples</strong>...</p>
 						<p class="fragment">In order to make it <em>nearly</em>-realtime,</p>
 						<p class="fragment">Max was designed with a few programming <em>“tricks”</em> to make it more efficient...</p>
@@ -168,10 +185,10 @@
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>What is JIT?</h4>
+						<h4>Why Do We Need <span class="gen">gen~</span>?</h4>
 					</div>
 					<div class="special-body">
-						<img data-src="img/03.greg.signal.vectors.png" width="50%" class="fade-in-text" alt="bad IIR">  
+						<img data-src="img/03.greg.signal.vectors.png" class="bogus-iir fade-in-text" alt="bad IIR">  
 					</div>
 				</section>
 
@@ -182,7 +199,9 @@
 					<div class="special-body">
 						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
 						<p>In Options > Audio Status... we set the <strong>Sampling Rate</strong>, <strong>I/O Vector Size</strong>, and <strong>Signal Vector Size</strong>.</p>   
-						<p class="fragment">The <strong>Sampling Rate</strong> determines how many samples are needed to produce 1 second of audio.</p>
+						<p class="fragment">The <strong>Sampling Rate</strong> determines how many samples are needed to produce 1 second of audio.</p>  
+						<p class="fragment">Be sure you're working at a <strong>sampling rate of 48000</strong> samples per second for your work in our classes.</p>
+
 					</div>
 				</section>
 
@@ -215,7 +234,7 @@
 					<div class="special-body">
 						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
 						<p>The <strong>Signal Vector Size</strong> can be <em>lower</em> than your <strong>I/O Vector Size</strong>,</p>
-						<p class="fragment">which means you can process audio <em>faster within MSP</em><br>than you can write to your soundcard.</p>
+						<p class="fragment">which means you can process audio <em>faster within MSP</em><br>than you can write it to your soundcard.</p>
 					</div>
 				</section>
 
@@ -224,11 +243,8 @@
 						<h4>Signal Vectors</h4>
 					</div>
 					<div class="special-body">
-						<img data-src="img/01.signal.vectors.v01.png" width="75%" class="fade-in-text" alt="bad IIR">  
+						<img data-src="img/01.signal.vectors.v01.png" width="85%" class="fade-in-text" alt="bad IIR">  
 						<p>You can also access these parameters inside of your Max patch.</p>
-						<p class="fragment">Think of these <strong>vectors</strong> as <em>packages</em> of samples.</p>
-						<p class="fragment">If you needed to send 1000 heavy books to your firend,<br>you wouldn't send them one at a time...</p>
-						<p class="fragment">...And just like with books, it is <strong>more efficient to send packages</strong> of data.</p>
 					</div>
 				</section>
 
@@ -237,8 +253,22 @@
 						<h4>Signal Vectors</h4>
 					</div>
 					<div class="special-body">
-						<img data-src="img/01.signal.vectors.v01.png" width="75%" class="fade-in-text" alt="bad IIR">  
-						<p>Most of the time, working in “blocks,” “chunks,” or <strong>vectors</strong> of samples is preferred,</p>
+						<img data-src="img/01.signal.vectors.v01.png" width="85%" class="fade-in-text" alt="bad IIR">  
+						<p>Think of these <strong>vectors</strong> as <em>packages</em> of samples.</p>
+						<p class="fragment">If you needed to send 100 heavy books to your friend,<br>you wouldn't send them one book at a time...</p>
+						<p class="fragment">It would be just as <strong>impractical</strong> to send 100 packages of 1 book<br>as it would be to send 1 package of 100 books.</p>
+						<p class="fragment">As with books, it is <strong>more efficient to deliver small packages</strong><br>of audio data, a few values at a time.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/01.signal.vectors.v01.png" width="85%" class="fade-in-text" alt="bad IIR">  
+						<p>Most of the time, working in a “block,” “chunk,” or <strong>vector</strong> of samples is preferred,</p>
+						<p class="fragment">its size depending on whether your musical material is static, transient, etc.</p>
 						<p class="fragment">But for many specialized tasks, we need to work at the <strong>single-sample level</strong></p>
 						<p class="fragment">and that is why we have <span class="gen">gen~</span>...</p>
 					</div>
@@ -253,8 +283,15 @@
 						<h4>What is <span class="gen">gen~</span>?</h4>
 					</div>
 					<div class="special-body">
-						<p><span class="gen">gen~</span> acts as a kind of interface to MaxMSP's underlying C++ code.</p>
-						<p class="fragment">By interacting with code on the single-sample level,<br>we can do a lot more than MSP afford us...</p>
+						<p><span class="gen">gen~</span> acts as a <strong>control interface for underlying C++ code</strong>.</p>
+						<p class="fragment">By controlling code on the single-sample level,<br>we can do a lot more than MSP allows us.</p>
+						<p class="fragment">In a <span class="gen">gen~</span> subpatch, <em>all</em> cables are flowing with data that travels<br><strong>one sample at a time</strong> — <em> no vectors!</em></p>
+						<p class="fragment">We work with <strong>floating-point (decimal) values</strong> as we do in Max,</p>
+						<p class="fragment">but these numbers are traveling <em>much faster</em>: at a single-sample audio rate!</p>
+						<blockquote class="fragment" style="font-size: 0.75em;">
+							<em>“...the whole [subpatch] moves <strong>one sample at a time</strong>.”</em>
+							<p>—Gregory Taylor</p>
+						</blockquote>
 					</div>
 				</section>
 
@@ -262,7 +299,190 @@
 					data-background-interactive>
 			  	</section>
 
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What Can We Make in <span class="gen">gen~</span> That We Can't in MSP?</h4>
+					</div>
+					<div class="special-body">
+						<ul>
+							<li class="fragment"><strong>feedback</strong> circuits (signal reinjections, recursions)</li>
+							<li class="fragment">custom <strong>reverb</strong> design</li>
+							<li class="fragment"><strong>dynamical systems</strong> (e.g., chaotic signals, stochastic noise)</li>
+							<li class="fragment">sample-accurate buffers</li>
+							<li class="fragment"><strong>3D wavetables</strong></li>
+							<li class="fragment">a greater variety of <strong>delays</strong> and <strong>filters</strong></li>
+							<li class="fragment"><em>and of course...</em></li>
+							<li class="fragment"><strong>PHYSICAL MODELS!</strong></li>
+						</ul>
+					</div>
+				</section>
 
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How is Patching in <span class="gen">gen~</span> Different From MSP?</h4>
+					</div>
+					<div class="special-body">
+					</div>
+				</section>
+
+				<section data-background-iframe="video/greg.taylor.n05.coding.etc.mp4"
+					data-background-interactive>
+			  	</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<div class="fragment">
+							<p>The following examples are taken from Chapter 6 of</p>
+							<p><strong><em>Generating Sound and Organizing Time</em></strong></p>
+							<p>by Graham Wakefield and Gregory Taylor.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/04.one.pole.LPF.topology.png" width="85%" class="fade-in-text" alt="LPF topology, p. 159"> 
+						<p class="fragment">Here is a <strong>filter topology</strong> for a single-pole lowpass filter (LPF). <em>(source: p. 159)</em></p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/05.x(n).png" width="75%" class="fade-in-text" alt="x(n)"> 
+						<p>In a <span class="gen">gen~</span> subpatch, <span class="gen">in 1</span> represents the <strong>input signal</strong> to the filter.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/06.y(n).png" width="75%" class="fade-in-text" alt="y(n)"> 
+						<p>And <span class="gen">out 1</span> represents the <strong>output signal</strong> from the filter.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/07.summation.png" width="75%" class="fade-in-text" alt="summation operator"> 
+						<p>The <strong>addition</strong> of signals can be expressed using the <span class="gen">+</span> operator.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/08.history.operator.png" width="75%" class="fade-in-text" alt="history operator"> 
+						<p>The <span class="gen">history</span> operator is our precious <strong>single-sample delay</strong>.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/09.amplitude.coefficients.png" width="75%" class="fade-in-text" alt="amplitude coefficients"> 
+						<p><strong>Amplitude coefficients</strong> <em>(recall</em> <strong>a0</strong> <em>and</em> <strong>a1</strong> <em>in our previous topologies)</em></p> 
+						<p class="fragment">can be set with <strong>gain stages</strong>, using the <span class="gen">*</span> and <span class="gen">param</span> operators.</p>			
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/10.side.by.side.topology.gen.subpatch.png" width="75%" class="fade-in-text" alt="complete topology and gen~ subpatch"> 
+						<p>If we turn the filter topology 90° clockwise,<br>it already resembles a Max patch with data flowing from top to bottom.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/10.side.by.side.topology.gen.subpatch.png" width="75%" class="fade-in-text" alt="complete topology and gen~ subpatch"> 
+						<p>The <span class="gen">gen~</span> subpatch (right) establishes a <strong>variable</strong> <span class="gen">a</span> using the <span class="gen">param</span> operator,</p>	
+						<p class="fragment">as arguments to the two <strong>gain stages</strong> <span class="gen">*</span>, and a <strong>single-sample delay</strong> <span class="gen">history</span> operator.</p>
+						<p class="fragment">The value of <span class="gen">a</span> can be set <em>outside</em> the <span class="gen">gen~</span> subpatch — in the <em>main patch</em>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/11.biquad.png" width="75%" class="fade-in-text" alt="biquad filter topology"> 
+						<p>Here is a slightly more complex example.</p>	
+						<p class="fragment"><em>Does this remind you of anything?...</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/12.biquad.msp.png" width="75%" class="fade-in-text" alt="biquad filter topology"> 
+						<p><em>Remember this guy?</em></p>	
+						<p class="fragment">It's your old friend: the <span class="gen">biquad~</span> filter object.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/11.biquad.png" width="75%" class="fade-in-text" alt="biquad filter topology"> 
+						<p>This is what it looks like as a <strong>filter topology</strong>.</p>	
+						<p class="fragment">For years, MaxMSP users wanted greater control over the <span class="gen">biquad~</span> MSP object,</p>
+						<p class="fragment">now made possible by the ability to <em>rebuild</em> and <em>customize</em> this filter in <span class="gen">gen~</span>.</p>  
+						<p class="fragment">Let's again turn the topology 90° clockwise and use the <span class="gen">gen~</span> operators...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/11.biquad.png" width="75%" class="fade-in-text" alt="biquad filter topology"> 
+						<p>This is what it looks like as a <strong>filter topology</strong>.</p>	
+						<p class="fragment">For years, MaxMSP users wanted greater control over the <span class="gen">biquad~</span> MSP object,</p>
+						<p class="fragment">now made possible by the ability to <em>rebuild</em> and <em>customize</em> this filter in <span class="gen">gen~</span>.</p>  
+						<p class="fragment">Let's again turn the topology 90° clockwise and use the <span class="gen">gen~</span> operators...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/13.biquad.complete.topology.and.gen.subpatch.png" width="48%" class="fade-in-text" alt="biquad topology and gen"> 
+						<p>And <em>voilà</em> — we did it.</p>	
+						<p class="fragment">Notice that the <span class="gen">gen~</span> inlets can be both <strong>named</strong> and <strong>numbered</strong>.</p>
+					</div>
+				</section>
 
 
 
