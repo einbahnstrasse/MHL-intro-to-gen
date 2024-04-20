@@ -246,16 +246,19 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 }
 
 .reveal pre {
-  display: block;
+  /* display: block; */
+  display: inline;
+  /* line-height: 0; */
   position: relative;
-  width: 90%;
-  margin: var(--r-block-margin) auto;
+  width: 0%;
+  /* margin: var(--r-block-margin) auto; */
+  margin: 0;
   text-align: left;
   font-size: 0.55em;
   font-family: var(--r-code-font);
   line-height: 1.2em;
   word-wrap: break-word;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); */
 }
 
 .reveal code {
@@ -265,11 +268,22 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 }
 
 .reveal pre code {
-  display: block;
-  padding: 5px;
+  /* display: block; */
+  display: inline;
+  padding: 3px;
   overflow: auto;
   max-height: 400px;
   word-wrap: normal;
+}
+
+.gen {
+  display: inline;
+  font-family: var(--r-code-font);
+  font-weight: bold;
+  color:lime;
+  background-color: #000;
+  padding: 2px;
+  line-height: 0;
 }
 
 .reveal .code-wrapper {
