@@ -84,18 +84,201 @@
 					<div class="special-header">
 						<h4>What is <span class="gen">gen~</span>?</h4>
 					</div>
-				</section>
-				<section class="special-slide" data-auto-animate>
-					<div class="special-header">
-						<h4>What is <span class="gen">gen~</span>?</h4>
-					</div>
 					<div class="special-body">
-						<p>What is <span class="gen">gen~</span>?</p>
+						<p class="fragment"><span class="gen">gen~</span> is another type of <strong>subpatch</strong> in MaxMSP,</p>  
+						<p class="fragment">much like the subpatches you already know:</p> 
+						<p class="fragment"><span class="gen">p</span>, <span class="gen">poly~</span>, and <span class="gen">pfft~</span></p>
 						<!-- <blockquote class="fragment" style="font-size: smaller;">
 							<em>Max is an interactive, visual patching environment for musicians,<br>artists, and anyone who loves creating, inventing,<br>or prototyping their own unique software.</em>
 						</blockquote> -->
 					</div>
 				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is <span class="gen">gen~</span>?</h4>
+					</div>
+					<div class="special-body">
+						<p>The purpose of <span class="gen">poly~</span> is to handle <strong>voice allocation</strong>,</p>  
+						<p class="fragment">while <span class="gen">pfft~</span> is designed for <strong>spectral audio processing</strong>.</p> 
+						<p class="fragment"><em>Well, that’s very nice, but what about the</em> <span class="gen">gen~</span> <em>subpatch?</em></p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is <span class="gen">gen~</span>?</h4>
+					</div>
+					<div class="special-body">
+						<p>Making a <span class="gen">gen~</span> subpatch is a lot like programming <strong>the code of an MSP (audio) object</strong>...</p>  
+						<p class="fragment">It allows us to do audio processing tasks</p>  
+						<p class="fragment">that cannot be accomplished with our standard MSP objects.</p>
+						<p class="fragment"><span class="gen">gen~</span> is its own <strong>language</strong>:</p> 
+						<blockquote class="fragment" style="font-size: 0.75em;">
+							<em>“devoted to audio processing and musical programming <strong>at the sample frame level</strong>.”</em>
+							<p>—Gregory Taylor</p>
+						</blockquote>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is <span class="gen">gen~</span>?</h4>
+					</div>
+					<div class="special-body">
+						<p>The following video examples are taken from the presentation:</p>
+						<p class="fragment">Max Meetup, May 2023<br><em>Generating Sound and Organizing Time</em><br>with Gregory Taylor and Graham Wakefield</p>
+						<p class="fragment">posted on the <a href="https://www.youtube.com/@MusicHackspace" target="_blank">Music Hackspace</a>  YouTube channel.</p>
+					</div>
+				</section>
+
+				<section data-background-iframe="video/greg.taylor.n01.what.is.gen.mp4"
+          			data-background-interactive>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is JIT?</h4>
+					</div>
+					<div class="special-body">
+						<p class="fragment"><strong>JIT</strong> <em>(“Just-in-Time”)</em> compiling</p>
+						<p class="fragment">also known as <strong>run-time compiling</strong></p>
+						<p class="fragment">means your code is compiled <strong>during execution</strong>.</p>
+						<p class="fragment">That is, code is <em>translated</em> into machine directions <br>at <em>nearly the same moment</em> your computer <em>calls</em><br>or <em>executes</em> those directions to process a result.</p>
+						<p class="fragment">MaxMSP compiles your code extremely quickly.</p>
+						<p class="fragment">You can edit your code <em>“on the fly”</em> with low latency<br>and minimal disruption to your signal flow.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is JIT?</h4>
+					</div>
+					<div class="special-body">
+						<p>But Greg explains next, MaxMSP is <strong>not</strong> operating on a <em>sample-by-sample</em> basis.</p>
+						<p class="fragment">Instead, Max processes audio in <strong>blocks (or “chunks”) of audio samples</strong>...</p>
+						<p class="fragment">In order to make it <em>nearly</em>-realtime,</p>
+						<p class="fragment">Max was designed with a few programming <em>“tricks”</em> to make it more efficient...</p>
+					</div>
+				</section>
+
+				<section data-background-iframe="video/greg.taylor.n02.signal.vectors.mp4"
+					data-background-interactive>
+		  		</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is JIT?</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/03.greg.signal.vectors.png" width="50%" class="fade-in-text" alt="bad IIR">  
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
+						<p>In Options > Audio Status... we set the <strong>Sampling Rate</strong>, <strong>I/O Vector Size</strong>, and <strong>Signal Vector Size</strong>.</p>   
+						<p class="fragment">The <strong>Sampling Rate</strong> determines how many samples are needed to produce 1 second of audio.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
+						<p>In Options > Audio Status... we set the <strong>Sampling Rate</strong>, <strong>I/O Vector Size</strong>, and <strong>Signal Vector Size</strong>.</p>   
+						<p>The <strong>I/O Vector Size</strong> sets the number of samples to send and receive from your soundcard<br>in each “block,” “chunk,” or vector.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
+						<p>In Options > Audio Status... we set the <strong>Sampling Rate</strong>, <strong>I/O Vector Size</strong>, and <strong>Signal Vector Size</strong>.</p>   
+						<p>The <strong>Signal Vector Size</strong> sets the number of samples to process<br><em>within</em> each MSP “block,” “chunk,” or vector.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/02.audio.status.window.png" width="50%" class="fade-in-text" alt="audio status window">  
+						<p>The <strong>Signal Vector Size</strong> can be <em>lower</em> than your <strong>I/O Vector Size</strong>,</p>
+						<p class="fragment">which means you can process audio <em>faster within MSP</em><br>than you can write to your soundcard.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/01.signal.vectors.v01.png" width="75%" class="fade-in-text" alt="bad IIR">  
+						<p>You can also access these parameters inside of your Max patch.</p>
+						<p class="fragment">Think of these <strong>vectors</strong> as <em>packages</em> of samples.</p>
+						<p class="fragment">If you needed to send 1000 heavy books to your firend,<br>you wouldn't send them one at a time...</p>
+						<p class="fragment">...And just like with books, it is <strong>more efficient to send packages</strong> of data.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Signal Vectors</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/01.signal.vectors.v01.png" width="75%" class="fade-in-text" alt="bad IIR">  
+						<p>Most of the time, working in “blocks,” “chunks,” or <strong>vectors</strong> of samples is preferred,</p>
+						<p class="fragment">But for many specialized tasks, we need to work at the <strong>single-sample level</strong></p>
+						<p class="fragment">and that is why we have <span class="gen">gen~</span>...</p>
+					</div>
+				</section>
+
+				<section data-background-iframe="video/greg.taylor.n03.what.does.gen.do.mp4"
+					data-background-interactive>
+			  	</section>
+
+				  <section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What is <span class="gen">gen~</span>?</h4>
+					</div>
+					<div class="special-body">
+						<p><span class="gen">gen~</span> acts as a kind of interface to MaxMSP's underlying C++ code.</p>
+						<p class="fragment">By interacting with code on the single-sample level,<br>we can do a lot more than MSP afford us...</p>
+					</div>
+				</section>
+
+				<section data-background-iframe="video/greg.taylor.n04.one.sample.at.a.time.mp4"
+					data-background-interactive>
+			  	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
 						<h4>What is MaxMSP? — Uses (and Abuses)</h4>
